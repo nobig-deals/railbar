@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProjectRow: View {
     let project: RailwayProject
-    @State private var isExpanded = true
+    @State private var isExpanded = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {

@@ -15,6 +15,10 @@ struct MenuBarView: View {
                 projectListView
             }
 
+            if let warning = appState.rateLimitWarning {
+                rateLimitBanner(warning)
+            }
+
             Divider()
                 .padding(.vertical, 4)
 
@@ -90,6 +94,23 @@ struct MenuBarView: View {
                 ProjectRow(project: project)
             }
         }
+    }
+
+    // MARK: - Rate Limit Banner
+
+    private func rateLimitBanner(_ message: String) -> some View {
+        HStack(spacing: 4) {
+            Image(systemName: "gauge.with.dots.needle.33percent")
+                .foregroundStyle(.orange)
+            Text(message)
+                .foregroundStyle(.secondary)
+        }
+        .font(.caption2)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.orange.opacity(0.1), in: RoundedRectangle(cornerRadius: 4))
+        .padding(.top, 4)
     }
 
     // MARK: - Footer

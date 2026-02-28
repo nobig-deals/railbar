@@ -9,6 +9,9 @@ xcuserdata/
 # Generated Xcode project (regenerate with `xcodegen`)
 *.xcodeproj
 
+# Secrets / env
+.env*
+
 # macOS
 .DS_Store
 

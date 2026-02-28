@@ -5,7 +5,7 @@ import Foundation
 struct RailwayProject: Identifiable {
     let id: String
     let name: String
-    let services: [RailwayService]
+    var services: [RailwayService]
     let environments: [RailwayEnvironment]
 }
 
@@ -88,69 +88,48 @@ struct GraphQLError: Decodable {
     let message: String
 }
 
-struct ProjectsQueryData: Decodable {
-    let me: MeData
+// Response for: query { projects { edges { node { id name services { ... } environments { ... } } } } }
+struct ProjectsWithDetailsQueryData: Decodable {
+    let projects: ProjectConnection
 
-    struct MeData: Decodable {
-        let projects: ProjectConnection
+    struct ProjectConnection: Decodable {
+        let edges: [ProjectEdge]
 
-        struct ProjectConnection: Decodable {
-            let edges: [ProjectEdge]
+        struct ProjectEdge: Decodable {
+            let node: ProjectNode
 
-            struct ProjectEdge: Decodable {
-                let node: ProjectNode
+            struct ProjectNode: Decodable {
+                let id: String
+                let name: String
+                let services: ServiceConnection
+                let environments: EnvironmentConnection
 
-                struct ProjectNode: Decodable {
-                    let id: String
-                    let name: String
-                    let services: ServiceConnection
-                    let environments: EnvironmentConnection
+                struct ServiceConnection: Decodable {
+                    let edges: [ServiceEdge]
 
-                    struct ServiceConnection: Decodable {
-                        let edges: [ServiceEdge]
+                    struct ServiceEdge: Decodable {
+                        let node: ServiceNode
 
-                        struct ServiceEdge: Decodable {
-                            let node: ServiceNode
-
-                            struct ServiceNode: Decodable {
-                                let id: String
-                                let name: String
-                                let icon: String?
-                            }
-                        }
-                    }
-
-                    struct EnvironmentConnection: Decodable {
-                        let edges: [EnvironmentEdge]
-
-                        struct EnvironmentEdge: Decodable {
-                            let node: EnvironmentNode
-
-                            struct EnvironmentNode: Decodable {
-                                let id: String
-                                let name: String
-                            }
+                        struct ServiceNode: Decodable {
+                            let id: String
+                            let name: String
+                            let icon: String?
                         }
                     }
                 }
-            }
-        }
-    }
-}
 
-struct DeploymentsQueryData: Decodable {
-    let deployments: DeploymentConnection
+                struct EnvironmentConnection: Decodable {
+                    let edges: [EnvironmentEdge]
 
-    struct DeploymentConnection: Decodable {
-        let edges: [DeploymentEdge]
+                    struct EnvironmentEdge: Decodable {
+                        let node: EnvironmentNode
 
-        struct DeploymentEdge: Decodable {
-            let node: DeploymentNode
-
-            struct DeploymentNode: Decodable {
-                let id: String
-                let status: String
-                let createdAt: String
+                        struct EnvironmentNode: Decodable {
+                            let id: String
+                            let name: String
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct RailwayBarApp: App {
+struct RailBarApp: App {
     @StateObject private var appState = AppState()
 
     var body: some Scene {
@@ -9,10 +9,11 @@ struct RailwayBarApp: App {
             MenuBarView()
                 .environmentObject(appState)
         } label: {
-            Label {
-                Text("Railway")
-            } icon: {
+            HStack(spacing: 4) {
                 Image(systemName: appState.statusIcon)
+                if !appState.statusText.isEmpty {
+                    Text(appState.statusText)
+                }
             }
         }
         .menuBarExtraStyle(.window)

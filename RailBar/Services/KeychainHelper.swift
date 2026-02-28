@@ -2,7 +2,7 @@ import Foundation
 import Security
 
 enum KeychainHelper {
-    private static let service = "com.michalcerny.RailwayBar"
+    private static let service = "com.michalcerny.RailBar"
     private static let account = "railway-api-token"
 
     static func save(token: String) {

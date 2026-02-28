@@ -5,15 +5,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Railway Bar</string>
+	<string>RailBar</string>
 	<key>CFBundleExecutable</key>
-	<string>RailwayBar</string>
+	<string>RailBar</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.michalcerny.RailwayBar</string>
+	<string>com.michalcerny.RailBar</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>RailwayBar</string>
+	<string>RailBar</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
