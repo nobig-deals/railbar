@@ -6,6 +6,10 @@ A lightweight macOS menu bar app for monitoring your [Railway](https://railway.a
 ![Swift 6](https://img.shields.io/badge/Swift-6-orange)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green)
 
+<p align="center">
+  <img src="assets/screenshot.png" alt="RailBar screenshot" width="400">
+</p>
+
 ## Features
 
 - Live deployment status for all your Railway projects and services
@@ -25,7 +29,7 @@ Grab the latest `.dmg` from [Releases](../../releases), open it, and drag **Rail
 Requires Xcode 16+ and [XcodeGen](https://github.com/yonaskolb/XcodeGen).
 
 ```bash
-git clone https://github.com/michalcerny/railbar.git
+git clone https://github.com/nobig-deals/railbar.git
 cd railbar
 xcodegen generate
 open RailBar.xcodeproj
